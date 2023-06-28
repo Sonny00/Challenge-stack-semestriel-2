@@ -1,6 +1,8 @@
 # Démarrage du projet 
-start: 
-	docker-compose up -d
+
+start:
+	$(shell cd backend && skaffold dev)
+
 
 # Arrêt du projet 
 
