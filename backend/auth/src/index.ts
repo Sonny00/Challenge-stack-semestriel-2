@@ -1,5 +1,7 @@
 import express from 'express'; 
 import { json } from 'body-parser';
+import mongoose from 'mongoose';
+import 'express-async-errors'
 
 import { currentUserRouter } from './routes/current-user';
 import { signinUserRouter } from './routes/signin';
@@ -7,8 +9,6 @@ import { signupUserRouter } from './routes/signup';
 import { signoutUserRouter } from './routes/signout';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/error-404';
-import mongoose from 'mongoose';
-import 'express-async-errors'
 
 const app = express();
 app.use(json());
@@ -19,7 +19,6 @@ app.use(currentUserRouter);
 app.use(signinUserRouter);
 app.use(signupUserRouter);
 app.use(signoutUserRouter);
-app.use(currentUserRouter);
 
 
 app.all('*', async (req, res) => {
@@ -38,8 +37,8 @@ const start = async () => {
   }
 };
 
-app.listen(3000, () => {
-  console.log('Le service d\'authentification est démarré sur le port 3000 !');
+app.listen(3001, () => {
+  console.log('Le service d\'authentification est démarré sur le port 3001 !');
 });
 
 start();

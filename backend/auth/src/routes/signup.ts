@@ -1,14 +1,16 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import { RequestValidationError } from "../errors/request-validation-error";
-import { DatabaseConnectionError } from "../errors/database-connection-errors";
+// import { DatabaseConnectionError } from "../errors/database-connection-errors";
+import { User } from "../models/user";
 
 const router = express.Router();
 
 router.post(
   "/api/users/signup",
   [
-    body("email").isEmail().withMessage("L'Email doit être valide"),
+    body("email").isEmail()
+      .withMessage("L'Email doit être valide"),
     body("password")
       .trim()
       .isLength({ min: 4, max: 20 })
@@ -20,10 +22,20 @@ router.post(
     if (!errors.isEmpty()) {
       throw new RequestValidationError(errors.array());
     }
-    throw new DatabaseConnectionError();
+   
+   const { email, password } = req.body;
+   const existingUser = await User.findOne({ email });
+   
+   if (existingUser) {
+     console.log("L'email est déjà utilisé");
+     return res.send({});
+   }
+  
+     const user = User.build({ email, password });
+     await user.save();
 
-    res.send({});
+     res.status(201).send(user);
   }
-);
+); 
 
 export { router as signupUserRouter };
