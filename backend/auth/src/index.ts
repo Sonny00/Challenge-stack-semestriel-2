@@ -2,6 +2,7 @@ import express from 'express';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
 import 'express-async-errors'
+import cookieSession from 'cookie-session'; 
 
 import { currentUserRouter } from './routes/current-user';
 import { signinUserRouter } from './routes/signin';
@@ -11,7 +12,14 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/error-404';
 
 const app = express();
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+  })
+);
 
 
 // Création des routes 
@@ -29,9 +37,13 @@ app.use(errorHandler);
 
 // Connexion à la base de données
 const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY doit être défini');
+  }
+  
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
-    
+
     console.log('Connecté à la base de données');
   } catch (err) {
     console.error(err);

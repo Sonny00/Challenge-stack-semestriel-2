@@ -24,27 +24,32 @@ const userSchema = new moongose.Schema({
         type: String,
         required: true
     },
-
-});
+ },
+    {
+    toJSON: {
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.__v;
+        },
+    },
+  }
+);
 
 userSchema.pre('save', async function (done) {
     if (this.isModified('password')) {
         const hashed = await Password.toHash(this.get('password'));
         this.set('password', hashed);
     }
-            done();
+    done();
 });
 
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };
 
-
 const User = moongose.model<UserDoc, UserModel>('User', userSchema);
 
-const buildUser = (attrs: UserAttrs) => {
-    return new User(attrs);
-};
-
-export { User, buildUser };
+export { User };
     
