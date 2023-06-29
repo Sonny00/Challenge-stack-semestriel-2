@@ -26,9 +26,7 @@ router.post(
           throw new BadRequestError("Identifiants invalides");
       }
 
-      const passwordsMatch = await Password.compare(
-          existingUser.password, password
-      ); 
+      const passwordsMatch = await Password.compare(existingUser.password, password); 
       if (!passwordsMatch) {
           throw new BadRequestError("Identifiants invalidess");
       }
