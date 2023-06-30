@@ -16,7 +16,7 @@ const start = async () => {
   }
 };
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log('Le service d\'authentification est démarré sur le port 3001 !');
 });
 
