@@ -59,7 +59,7 @@ const LoginRegister = () => {
       {/* breadcrumb */}
       <BreadcrumbOne
         pageTitle="Espace Client "
-        backgroundImage="/assets/images/backgrounds/breadcrumb-bg-2.jpg"
+        backgroundImage="../assets/images/harley-davidson-g788352755_1920.jpg"
       >
         <ul className="breadcrumb__list">
           <li>

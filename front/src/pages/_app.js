@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.css";
 import buildClient from "../api/build-client";
+import Navigation from "../components/Header/elements/Navigation";
 
 import "../assets/scss/styles.scss";
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
     <div>
-      <h1>Header!</h1>
       <Component {...pageProps} />
     </div>
   );

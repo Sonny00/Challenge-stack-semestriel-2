@@ -57,21 +57,6 @@ const HeaderOne = ({ aboutOverlay }) => {
           <div className="header-content d-flex align-items-center justify-content-between position-relative space-py-mobile-only--30">
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
-              <button
-                onClick={() => {
-                  setOffCanvasAboutActive(true);
-                  document
-                    .querySelector("body")
-                    .classList.add("overflow-hidden");
-                }}
-                className={clsx(
-                  aboutOverlay === false
-                    ? "d-none"
-                    : "about-overlay-trigger d-none d-lg-block"
-                )}
-              >
-                <IoIosMenu />
-              </button>
               <Anchor path="/">
                 <img
                   src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
@@ -80,9 +65,6 @@ const HeaderOne = ({ aboutOverlay }) => {
                 />
               </Anchor>
             </div>
-
-            {/* navigation */}
-            <Navigation />
 
             {/* icons */}
             <div className="header-content__icons space-pl--15">
