@@ -12,22 +12,11 @@ const FooterThree = () => {
             <nav className="footer-nav-container footer-nav-container--horizontal space-mb--50">
               <ul>
                 <li>
-                  <a href="#">ABOUT US</a>
+                  <a href="#">A PROPOS</a>
                 </li>
+
                 <li>
-                  <a href="#">STORE LOCATION</a>
-                </li>
-                <li>
-                  <a href="#">CONTACT</a>
-                </li>
-                <li>
-                  <a href="#">SUPPORT</a>
-                </li>
-                <li>
-                  <a href="#">POLICY</a>
-                </li>
-                <li>
-                  <a href="#">FAQS</a>
+                  <a href="#">NOUS CONTACTER</a>
                 </li>
               </ul>
             </nav>
@@ -46,20 +35,6 @@ const FooterThree = () => {
                   >
                     <a href="https://www.twitter.com" target="_blank">
                       <FaTwitter />
-                    </a>
-                  </Tooltip>
-                </li>
-                <li>
-                  <Tooltip
-                    title="Facebook"
-                    position="top"
-                    trigger="mouseenter"
-                    animation="shift"
-                    arrow={true}
-                    duration={200}
-                  >
-                    <a href="https://www.facebook.com" target="_blank">
-                      <FaFacebookF />
                     </a>
                   </Tooltip>
                 </li>
@@ -96,12 +71,9 @@ const FooterThree = () => {
 
             {/*=======  copyright text  =======*/}
             <div className="footer-copyright-text">
-              &copy; {new Date().getFullYear() + " "}
-              <a href="https://www.hasthemes.com" target="_blank">
-                lezada
-              </a>
-              . All Rights Reserved | <span>(+00) 123 567990</span> |
-              contact@lezada.com
+              EsgiVroom votre site d'achat de moto |{" "}
+              <span>(+33) 1 56 06 90 41 </span> &copy;{" "}
+              {new Date().getFullYear() + " "}
             </div>
           </Col>
         </Row>

@@ -58,14 +58,14 @@ const LoginRegister = () => {
     <LayoutTwo>
       {/* breadcrumb */}
       <BreadcrumbOne
-        pageTitle="Customer Login"
+        pageTitle="Espace Client "
         backgroundImage="/assets/images/backgrounds/breadcrumb-bg-2.jpg"
       >
         <ul className="breadcrumb__list">
           <li>
-            <Anchor path="/">Home</Anchor>
+            <Anchor path="/">Accueil</Anchor>
           </li>
-          <li>Customer Login</li>
+          <li>Espace Client</li>
         </ul>
       </BreadcrumbOne>
       <div className="login-area space-mt--r130 space-mb--r130">
@@ -92,12 +92,12 @@ const LoginRegister = () => {
                     <Col lg={12} className="space-mb--60">
                       <input
                         type="password"
-                        placeholder="Password"
+                        placeholder="Mot de passe"
                         value={loginPassword}
                         onChange={(e) => setLoginPassword(e.target.value)}
                       />
                     </Col>
-                    <Col lg={12} className="space-mb--30">
+                    <Col lg={12} className="text-center">
                       <button className="lezada-button lezada-button--medium">
                         Connexion
                       </button>
@@ -131,7 +131,7 @@ const LoginRegister = () => {
                     </Col>
                     <Col lg={12} className="space-mb--50">
                       <label htmlFor="regPassword">
-                        Password <span className="required">*</span>{" "}
+                        Mot de passe <span className="required">*</span>{" "}
                       </label>
                       <input
                         type="password"

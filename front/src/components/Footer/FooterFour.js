@@ -9,9 +9,9 @@ const FooterFour = () => {
         <Row>
           <Col className="footer-single-widget footer-single-widget--style2 space-mb--50">
             <p className="footer-email">
-              <a href="mailto:contact@lezada.com">contact@lezada.com</a>
+              <a href="mailto:contact@l">esgivroom@outlook.fr</a>
             </p>
-            <p className="footer-phone">(+88) 123 4566 6868</p>
+            <p className="footer-phone">(+33) 6 12 34 56 78</p>
             <div className="store-icons space-mb--m20">
               <a href="#">
                 <img

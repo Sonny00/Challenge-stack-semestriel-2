@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    
+    "@hasanm95/cogo-toast": "https://github.com/hasanm95/cogo-toast",
+    "@next/font": "^13.0.5",
+    "@reduxjs/toolkit": "^1.9.0",
     "axios": "^1.4.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.0",
