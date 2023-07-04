@@ -11,7 +11,7 @@ build:
       docker:
         dockerfile: Dockerfile
     - image: esgivroom/front
-      context: ../front
+      context: ../front/src
       sync:
         manual:
           - src: '**/*.js'

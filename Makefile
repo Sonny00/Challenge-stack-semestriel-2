@@ -1,7 +1,8 @@
 # Démarrage du projet 
 
 start:
-	$(shell cd backend && skaffold dev)
+	$(shell cd backend && skaffold dev --tail)
+
 
 
 # Arrêt du projet 
