@@ -6,9 +6,12 @@ const start = async () => {
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY doit être défini');
   }
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI doit défini');
+  }
   
   try {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    await mongoose.connect(process.env.MONGO_URI);
 
     console.log('Connecté à la base de données');
   } catch (err) {

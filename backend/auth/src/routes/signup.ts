@@ -3,9 +3,7 @@ import { body } from "express-validator";
 import jwt from "jsonwebtoken";
 // import { DatabaseConnectionError } from "../errors/database-connection-errors";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-requests";
-
+import { validateRequest, BadRequestError } from "@esgivroom/common";
 
 const router = express.Router();
 

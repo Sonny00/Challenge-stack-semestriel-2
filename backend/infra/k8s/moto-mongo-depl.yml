@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moto-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moto-mongo
+  template:
+    metadata:
+      labels:
+        app: moto-mongo
+    spec:
+      containers:
+        - name: moto-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moto-mongo-srv
+spec:
+  selector:
+    app: moto-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
