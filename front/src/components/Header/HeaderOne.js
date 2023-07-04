@@ -57,14 +57,11 @@ const HeaderOne = ({ aboutOverlay }) => {
           <div className="header-content d-flex align-items-center justify-content-between position-relative space-py-mobile-only--30">
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
-              <Anchor path="/">
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
-                  className="img-fluid"
-                  alt=""
-                />
-              </Anchor>
+              <Anchor path="/"></Anchor>
             </div>
+
+            {/* navigation */}
+            <Navigation />
 
             {/* icons */}
             <div className="header-content__icons space-pl--15">
@@ -81,31 +78,8 @@ const HeaderOne = ({ aboutOverlay }) => {
                     <IoIosSearch />
                   </button>
                 </li>
-                <li>
-                  <Anchor path="/other/login-register">
-                    <IoMdPerson />
-                  </Anchor>
-                </li>
                 <li></li>
-                <li>
-                  {/* <button
-                    onClick={() => {
-                      setOffCanvasCartActive(true);
-                      document
-                        .querySelector("body")
-                        .classList.add("overflow-hidden");
-                    }}
-                  >
-                    <IoIosCart />
-                    {cartItems.length >= 1 ? (
-                      <span className="count">
-                        {cartItems.length ? cartItems.length : ""}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </button> */}
-                </li>
+                <li></li>
               </ul>
 
               <ul className="d-block d-lg-none">

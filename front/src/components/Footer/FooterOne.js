@@ -9,37 +9,23 @@ const FooterOne = () => {
         <Row>
           <Col lg={9} md={12} className="space-mb-mobile-only--50">
             {/*=======  footer navigation  =======*/}
-            <nav className="footer-nav-container footer-nav-container--horizontal space-mb--20">
+            <nav className="footer-nav-container footer-nav-container--horizontal space-mb--50">
               <ul>
                 <li>
-                  <a href="#">ABOUT US</a>
+                  <a href="#">A PROPOS</a>
                 </li>
+
                 <li>
-                  <a href="#">STORE LOCATION</a>
-                </li>
-                <li>
-                  <a href="#">CONTACT</a>
-                </li>
-                <li>
-                  <a href="#">SUPPORT</a>
-                </li>
-                <li>
-                  <a href="#">POLICY</a>
-                </li>
-                <li>
-                  <a href="#">FAQS</a>
+                  <a href="#">NOUS CONTACTER</a>
                 </li>
               </ul>
             </nav>
 
             {/*=======  copyright text  =======*/}
             <div className="footer-copyright-text">
-              &copy; {new Date().getFullYear() + " "}
-              <a href="https://www.hasthemes.com" target="_blank">
-                lezada
-              </a>
-              . All Rights Reserved | <span>(+00) 123 567990</span> |
-              contact@lezada.com
+              EsgiVroom votre site d'achat de moto |{" "}
+              <span>(+33) 1 23 34 56 78 </span> &copy;{" "}
+              {new Date().getFullYear() + " "}
             </div>
           </Col>
           <Col lg={3} md={12} className="text-start text-lg-end">
@@ -108,7 +94,7 @@ const FooterOne = () => {
             {/*=======  payment icon  =======*/}
             <div className="payment-icon">
               <img
-                src={process.env.PUBLIC_URL + "/assets/images/icon/pay.png"}
+                src={"/assets/images/icon/pay.png"}
                 className="img-fluid"
                 alt=""
               />

@@ -12,7 +12,7 @@ const LoginRegister = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const { doRequest: loginRequest, errors: loginErrors } = useRequest({
-    url: "/api/users/login",
+    url: "/api/users/signin",
     method: "post",
     body: {
       email: loginEmail,
@@ -58,14 +58,14 @@ const LoginRegister = () => {
     <LayoutTwo>
       {/* breadcrumb */}
       <BreadcrumbOne
-        pageTitle="Espace Client "
-        backgroundImage="../assets/images/harley-davidson-g788352755_1920.jpg"
+        pageTitle="Espace Client"
+        backgroundImage=""
       >
         <ul className="breadcrumb__list">
           <li>
             <Anchor path="/">Accueil</Anchor>
           </li>
-          <li>Espace Client</li>
+          <li>Espace Clients</li>
         </ul>
       </BreadcrumbOne>
       <div className="login-area space-mt--r130 space-mb--r130">

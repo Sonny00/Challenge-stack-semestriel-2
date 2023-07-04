@@ -8,7 +8,9 @@ const Navigation = () => {
         <li>
           <Anchor path="/">Accueil</Anchor>
         </li>
-        <ul className="sub-menu--one-column sub-menu--one-column--child-menu"></ul>
+        <li>
+          <Anchor path="/">Mon Panier</Anchor>
+        </li>
       </ul>
     </nav>
   );

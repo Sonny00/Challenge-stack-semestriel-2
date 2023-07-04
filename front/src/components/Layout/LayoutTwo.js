@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { HeaderOne } from "../Header";
-import { FooterThree } from "../Footer";
+import { FooterOne } from "../Footer";
 import ScrollToTop from "../scroll-to-top";
 
 const LayoutTwo = ({ children, aboutOverlay, footerBgClass }) => {
@@ -8,7 +8,7 @@ const LayoutTwo = ({ children, aboutOverlay, footerBgClass }) => {
     <Fragment>
       <HeaderOne aboutOverlay={aboutOverlay} />
       {children}
-      <FooterThree footerBgClass={footerBgClass} />
+      <FooterOne footerBgClass={footerBgClass} />
       <ScrollToTop />
     </Fragment>
   );

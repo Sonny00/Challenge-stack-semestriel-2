@@ -6,7 +6,7 @@ const BreadcrumbOne = ({ children, backgroundImage, pageTitle, className }) => {
     <div
       className={clsx("breadcrumb-area space-pt--70 space-pb--70", className)}
       style={{
-        backgroundImage: `url("${process.env.PUBLIC_URL + backgroundImage}")`
+        backgroundImage: `url("assets/images/backgrounds/breadcrumb-bg-4.jpg")`,
       }}
     >
       <Container>
