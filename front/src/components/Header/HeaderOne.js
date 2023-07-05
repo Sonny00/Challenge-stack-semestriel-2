@@ -65,22 +65,7 @@ const HeaderOne = ({ aboutOverlay }) => {
 
             {/* icons */}
             <div className="header-content__icons space-pl--15">
-              <ul className="d-none d-lg-block">
-                <li>
-                  <button
-                    onClick={() => {
-                      setOffCanvasSearchActive(true);
-                      document
-                        .querySelector("body")
-                        .classList.add("overflow-hidden");
-                    }}
-                  >
-                    <IoIosSearch />
-                  </button>
-                </li>
-                <li></li>
-                <li></li>
-              </ul>
+              <ul className="d-none d-lg-block"></ul>
 
               <ul className="d-block d-lg-none">
                 {/* <li>

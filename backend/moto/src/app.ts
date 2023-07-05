@@ -2,8 +2,11 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@esgivroom/common';
+import { currentUser, errorHandler, NotFoundError } from '@esgivroom/common';
 import { createMotoRouter } from '../routes/new'
+import { showMotoRouter } from '../routes/show'
+import { indexMotoRouter } from '../routes/index'
+import { updateMotoRouter } from '../routes/update'
 
 const app = express();
 app.set('trust proxy', true);
@@ -22,5 +25,9 @@ app.all('*', async (req, res) => {
 });
 
 app.use(errorHandler);
+app.use(currentUser)
+app.use(showMotoRouter)
+app.use(indexMotoRouter)
+app.use(updateMotoRouter)
 
 export { app };
