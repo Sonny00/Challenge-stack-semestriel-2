@@ -1,26 +1,88 @@
-import "bootstrap/dist/css/bootstrap.css";
 import buildClient from "../api/build-client";
-import Navigation from "../components/Header/elements/Navigation";
-import Headers from "../components/Headers";
 
-import "../assets/scss/styles.scss";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { Container, SSRProvider } from 'react-bootstrap';
+
+import '../styles/app.css';
+import * as ga from '../lib/ga';
+import Headers from "../components/header/Header";
+import Footer from '../components/footer/Footer';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
+  const router = useRouter();
+
+  // router events
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url);
+    };
+    // When the component is mounted, subscribe to router changes
+    // and log those page views
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
-    <div>
-      <Headers currentUser={currentUser} />
-      <Component {...pageProps} />
-    </div>
+    <SSRProvider>
+      <Head>
+				<title>ESGIVroom | Boutique de motos et accessoiresWomen&apos;s Clothing Online Shop</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</Head>
+      <Headers currentUser={currentUser} {...pageProps}/>
+      <main className="pb-5" style={{ marginTop: '74px' }}>
+        <Container fluid>
+          <Component currentUser={currentUser} {...pageProps} />
+        </Container>
+      </main>
+      <Footer />
+    </SSRProvider>
   );
 };
 
 AppComponent.getInitialProps = async (appContext) => {
-  const client = buildClient(appContext.ctx);
-  const { data } = await client.get("/api/users/currentuser");
+  // const client = buildClient(appContext.ctx);
+  // const { data } = await client.get("/api/users/currentuser");
 
-  let pageProps = {};
-  if (appContext.Component.getInitialProps) {
-    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  // const { data: products } = await client.get('/api/products');
+  // const { data: orderProducts } = await client.get('/api/orders/products');
+  // const { data: paymentProducts } = await client.get('/api/payments/products');
+  
+  // DEMO
+  // const data = { currentUser: { id: "1KIHIH", email: "user@demo.fr" }}
+  const data = { }
+  const products = null;
+
+  let pageProps = {
+    products,
+    // orderProducts,
+    // paymentProducts,
+    // users,
+    // bestseller
+  };
+
+  if (data.currentUser) {
+    // const { data: myOrders } = await client.get('/api/orders/myorders');
+    // const { data: myReviews } = await client.get('/api/products/myreviews');
+
+    // const { data: orders } = await client.get('/api/orders');
+
+    pageProps = {
+      products,
+      // orderProducts,
+      // paymentProducts,
+      // users,
+      // bestseller,
+      // myOrders,
+      // myReviews,
+      // orders
+    };
   }
 
   return {
