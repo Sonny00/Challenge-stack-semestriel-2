@@ -10,7 +10,7 @@ import { Moto } from '../src/models/moto';
 
 const router = express.Router(); 
 
-router.put('/api/moto/:id', requireAuth, [body('title').not().isEmpty().withMessage('Un titre est nécessaire'),body('description').not().isEmpty().withMessage('Une description est nécessaire'),body('price').isFloat({ gt: 0 }).withMessage('Le prix doit être supérieur à 0')
+router.put('/api/moto/:id', requireAuth, [body('title').not().isEmpty().withMessage('Un titre est nécessaire'),body('price').isFloat({ gt: 0 }).withMessage('Le prix doit être supérieur à 0')
 ], validateRequest, async (req: Request, res: Response) => {
     const moto = await Moto.findById(req.params.id);
     if(!moto){
@@ -23,8 +23,8 @@ router.put('/api/moto/:id', requireAuth, [body('title').not().isEmpty().withMess
 
     moto.set({
         title: req.body.title,
-        description: req.body.description,
-        price: req.body.price
+        price: req.body.price,
+        
     });
     await moto.save();
 
