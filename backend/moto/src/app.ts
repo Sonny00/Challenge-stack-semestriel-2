@@ -18,6 +18,9 @@ app.use(
   })
 );
 
+app.use(currentUser)
+
+
 app.use(createMotoRouter);
 
 app.all('*', async (req, res) => {
@@ -25,7 +28,6 @@ app.all('*', async (req, res) => {
 });
 
 app.use(errorHandler);
-app.use(currentUser)
 app.use(showMotoRouter)
 app.use(indexMotoRouter)
 app.use(updateMotoRouter)
