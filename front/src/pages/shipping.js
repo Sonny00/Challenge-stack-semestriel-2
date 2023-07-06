@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import FormContainer from '../components/common/FormContainer';
 import CheckoutSteps from '../components/cart/CheckoutSteps';
+import { APP_NAME } from '../lib/dicts/common';
 
 const ShippingPage = ({ currentUser }) => {
   const [address, setAddress] = useState(null);
@@ -71,7 +72,7 @@ const ShippingPage = ({ currentUser }) => {
     isReady && (
 			<>
 				<Head>
-					<title>Shipping Address | Aurapan</title>
+					<title>Shipping Address | {APP_NAME}</title>
 				</Head>
 				{storageReady
 				  ? (

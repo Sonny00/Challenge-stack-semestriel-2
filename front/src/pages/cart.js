@@ -82,8 +82,6 @@ const CartPage = ({ currentUser, products }) => {
       }
 
       // Limit maximun and minimum range
-	  console.log(`existItem.countInStock + existItem.qty => ${existItem.countInStock + existItem.qty}`);
-	  console.log(`newQty => ${newQty}`);
       if (newQty > existItem.countInStock + existItem.qty) {
         newQty = existItem.countInStock + existItem.qty;
       } else if (newQty < 1) {
