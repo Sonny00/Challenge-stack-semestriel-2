@@ -45,7 +45,8 @@ const Product = ({
     if (isCloudinary) {
       return `https://res.cloudinary.com/thasup/image/upload/q_${quality || 60}/${src}`;
     } else {
-      return `https://www.dropbox.com/s/${src}?raw=1&q=${quality || 20}`;
+      return `https://images.unsplash.com/${src}`;
+    //   return `https://www.dropbox.com/s/${src}?raw=1&q=${quality || 20}`;
     }
   };
 
@@ -63,7 +64,7 @@ const Product = ({
 					passHref
 				>
 					<Card.Body
-						className="product-img__cover"
+						className="product-img__cover rounded"
 						style={{ opacity: toggle ? '0' : '1' }}
 					>
 						<Image
@@ -73,7 +74,7 @@ const Product = ({
 							objectFit="cover"
 							lazyBoundary={onMobile ? '400px' : '800px'}
 							priority={priority || false}
-							alt={`${product.title} image 1`}
+							alt={`${product.title}`}
 						/>
 					</Card.Body>
 				</Link>
@@ -94,7 +95,7 @@ const Product = ({
 							objectFit="cover"
 							lazyBoundary={onMobile ? '400px' : '800px'}
 							priority={priority || false}
-							alt={`${product.title} image 2`}
+							alt={`${product.title}`}
 						/>
 					</Card.Body>
 				</Link>

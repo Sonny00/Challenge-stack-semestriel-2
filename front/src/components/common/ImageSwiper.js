@@ -27,6 +27,16 @@ import 'swiper/css/keyboard';
 const ImageSwiper = ({ images, isBanner = false }) => {
   const [loading, setLoading] = useState(true);
 
+  const myLoader = ({ src, quality }) => {
+    const isCloudinary = src.includes('aurapan');
+    if (isCloudinary) {
+      return `https://res.cloudinary.com/thasup/image/upload/q_${quality || 60}/${src}`;
+    } else {
+      return `https://images.unsplash.com/${src}`;
+    //   return `https://www.dropbox.com/s/${src}?raw=1&q=${quality || 20}`;
+    }
+  };
+
   useEffect(() => {
     if (images.length > 0) {
       setLoading(false);
@@ -67,8 +77,10 @@ const ImageSwiper = ({ images, isBanner = false }) => {
 						className="ads-img"
 					>
 						<Image
+							loader={myLoader}
 							src={img}
-							layout={isBanner ? 'responsive' : 'fill'}
+							// layout={isBanner ? 'responsive' : 'fill'}
+							layout='fill'
 							objectFit="cover"
 							objectPosition="center center"
 							priority="true"

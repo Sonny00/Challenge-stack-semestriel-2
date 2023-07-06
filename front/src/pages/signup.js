@@ -1,161 +1,181 @@
-import { useState } from "react";
-import Router from "next/router";
-import useRequest from "../hooks/use-request";
-import { Container, Row, Col } from "react-bootstrap";
-import { LayoutTwo } from "../components/Layout";
-import { BreadcrumbOne } from "../components/Breadcrumb";
-import Anchor from "../components/anchor";
+import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const LoginRegister = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const { doRequest: loginRequest, errors: loginErrors } = useRequest({
-    url: "/api/users/signin",
-    method: "post",
+import useRequest from '../hooks/useRequest';
+import Loader from '../components/common/Loader';
+
+const signup = ({ currentUser }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('');
+  const [age, setAge] = useState(undefined);
+
+  const [loading, setLoading] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  const { doRequest, errors } = useRequest({
+    url: '/api/users/signup',
+    method: 'post',
     body: {
-      email: loginEmail,
-      password: loginPassword,
+      email,
+      password,
+      name,
+      gender,
+      age
     },
-    onSuccess: () => Router.push("/"),
-  });
-  const { doRequest: registerRequest, errors: registerErrors } = useRequest({
-    url: "/api/users/signup",
-    method: "post",
-    body: {
-      email: registerEmail,
-      password: registerPassword,
-    },
-    onSuccess: () => Router.push("/"),
-  });
-  const { doRequest: signInRequest, errors: signInErrors } = useRequest({
-    url: "/api/users/signin",
-    method: "post",
-    body: {
-      email: loginEmail,
-      password: loginPassword,
-    },
-    onSuccess: () => Router.push("/"),
+    onSuccess: () => {
+      Router.push('/');
+      setLoading(false);
+    }
   });
 
-  const onLoginSubmit = async (event) => {
+  useEffect(() => {
+    // Protect unauthorized access
+    if (currentUser) {
+      return Router.push('/');
+    } else {
+      setIsReady(true);
+    }
+
+    if (errors) {
+      setLoading(false);
+      setShowErrors(true);
+    }
+  }, [errors]);
+
+  const submitHandler = async (event) => {
     event.preventDefault();
-    await loginRequest();
+    setLoading(true);
+
+    doRequest();
   };
 
-  const onRegisterSubmit = async (event) => {
-    event.preventDefault();
-    await registerRequest();
-  };
-
-  const onSignInSubmit = async (event) => {
-    event.preventDefault();
-    await signInRequest();
+  const myLoader = ({ src }) => {
+    return `./asset/${src}`;
   };
 
   return (
-    <LayoutTwo>
-      {/* breadcrumb */}
-      <BreadcrumbOne
-        pageTitle="Espace Client"
-        backgroundImage=""
-      >
-        <ul className="breadcrumb__list">
-          <li>
-            <Anchor path="/">Accueil</Anchor>
-          </li>
-          <li>Espace Clients</li>
-        </ul>
-      </BreadcrumbOne>
-      <div className="login-area space-mt--r130 space-mb--r130">
-        <Container>
-          <Row>
-            <Col lg={6} className="space-mb-mobile-only--50">
-              <div className="lezada-form login-form">
-                <form onSubmit={onLoginSubmit}>
-                  <Row>
-                    <Col lg={12}>
-                      <div className="section-title--login text-center space-mb--50">
-                        <h2 className="space-mb--20">Connexion</h2>
-                        <p>Bon retour sur Vroom</p>
-                      </div>
-                    </Col>
-                    <Col lg={12} className="space-mb--60">
-                      <input
-                        type="email"
-                        placeholder="Adresse Email"
-                        value={loginEmail}
-                        onChange={(e) => setLoginEmail(e.target.value)}
-                      />
-                    </Col>
-                    <Col lg={12} className="space-mb--60">
-                      <input
-                        type="password"
-                        placeholder="Mot de passe"
-                        value={loginPassword}
-                        onChange={(e) => setLoginPassword(e.target.value)}
-                      />
-                    </Col>
-                    <Col lg={12} className="text-center">
-                      <button className="lezada-button lezada-button--medium">
-                        Connexion
-                      </button>
-                    </Col>
-                    <Col></Col>
-                  </Row>
-                </form>
-              </div>
-            </Col>
-            <Col lg={6}>
-              <div className="lezada-form login-form--register">
-                <form onSubmit={onRegisterSubmit}>
-                  <Row>
-                    <Col lg={12}>
-                      <div className="section-title--login text-center space-mb--50">
-                        <h2 className="space-mb--20">Inscription</h2>
-                        <p>Si vous n'avez pas de compte, inscrivez-vous !</p>
-                      </div>
-                    </Col>
-                    <Col lg={12} className="space-mb--30">
-                      <label htmlFor="regEmail">
-                        Adresse Email <span className="required">*</span>{" "}
-                      </label>
-                      <input
-                        type="text"
-                        id="regEmail"
-                        value={registerEmail}
-                        onChange={(e) => setRegisterEmail(e.target.value)}
-                        required
-                      />
-                    </Col>
-                    <Col lg={12} className="space-mb--50">
-                      <label htmlFor="regPassword">
-                        Mot de passe <span className="required">*</span>{" "}
-                      </label>
-                      <input
-                        type="password"
-                        id="regPassword"
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                        required
-                      />
-                    </Col>
-                    <Col lg={12} className="text-center">
-                      <button className="lezada-button lezada-button--medium">
-                        Inscription
-                      </button>
-                    </Col>
-                  </Row>
-                </form>
-              </div>
-            </Col>
-            <Col lg={6}></Col>
-          </Row>
-        </Container>
-      </div>
-    </LayoutTwo>
+    isReady && (
+			<>
+				<Head>
+					<title>Sign Up | Aurapan</title>
+				</Head>
+				{loading
+				  ? (
+					<div
+						className="d-flex justify-content-center align-items-center px-0"
+						style={{ marginTop: '80px' }}
+					>
+						<Loader />
+					</div>
+				    )
+				  : (
+					<Container className="app-container register-box">
+						<Row>
+							<Link href={'/signin'} passHref>
+								<Col className="banner-img">
+									<Image
+										loader={myLoader}
+										src="sign_in_banner_1.png"
+										layout="fill"
+										objectFit="cover"
+										objectPosition="left center"
+										priority="true"
+										alt="sign up banner"
+									/>
+								</Col>
+							</Link>
+
+							<Col>
+								<h1>Sign Up</h1>
+								<Form className="mt-3" onSubmit={submitHandler}>
+									<Form.Group controlId="email" className="my-3">
+										<Form.Label>Email address</Form.Label>
+										<Form.Control
+											type="email"
+											placeholder="Enter email"
+											value={email}
+											onChange={(e) => setEmail(e.target.value)}
+										></Form.Control>
+									</Form.Group>
+
+									<Form.Group controlId="password" className="my-3">
+										<Form.Label>Password</Form.Label>
+										<Form.Control
+											type="password"
+											placeholder="Enter password"
+											value={password}
+											onChange={(e) => setPassword(e.target.value)}
+										></Form.Control>
+									</Form.Group>
+
+									<Form.Group controlId="name" className="my-3">
+										<Form.Label>Name</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Enter name"
+											value={name}
+											onChange={(e) => setName(e.target.value)}
+										></Form.Control>
+									</Form.Group>
+
+									<Row className="gender-age-form">
+										<Col sm={6} className="gender-form">
+											<Form.Group controlId="gender">
+												<Form.Label>Gender</Form.Label>
+												<Form.Control
+													as="select"
+													className="form-select"
+													value={gender}
+													onChange={(e) => setGender(e.target.value)}
+												>
+													<option value="">Select Gender</option>
+													<option value="male">Male</option>
+													<option value="female">Female</option>
+												</Form.Control>
+											</Form.Group>
+										</Col>
+
+										<Col sm={6} className="age-form">
+											<Form.Group controlId="age">
+												<Form.Label>Age</Form.Label>
+												<Form.Control
+													type="number"
+													placeholder="Enter age"
+													value={age}
+													onChange={(e) => setAge(e.target.value)}
+												></Form.Control>
+											</Form.Group>
+										</Col>
+									</Row>
+
+									{showErrors ? errors : null}
+									<Button className="mt-3" type="submit" variant="dark">
+										Sign Up
+									</Button>
+								</Form>
+
+								<Row className="py-3">
+									<Col className="px-0">
+										Already have an account?{' '}
+										<Link href="/signin">
+											<a>Sign in</a>
+										</Link>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+					</Container>
+				    )}
+			</>
+    )
   );
 };
 
-export default LoginRegister;
+export default signup;

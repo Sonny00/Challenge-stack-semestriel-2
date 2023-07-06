@@ -9,6 +9,9 @@ import '../styles/app.css';
 import * as ga from '../lib/ga';
 import Headers from "../components/header/Header";
 import Footer from '../components/footer/Footer';
+import { PRODUCTS } from '../lib/datas/products'
+import { USERS } from '../lib/datas/users'
+
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   const router = useRouter();
@@ -55,16 +58,19 @@ AppComponent.getInitialProps = async (appContext) => {
   // const { data: paymentProducts } = await client.get('/api/payments/products');
   
   // DEMO
-  // const data = { currentUser: { id: "1KIHIH", email: "user@demo.fr" }}
-  const data = { }
-  const products = null;
+  const data = { currentUser: { id: "U1", email: "moufid.mtr@gmail.com" }}
+  // const data = { }
+  const products = PRODUCTS;
+  const bestseller = null;
+  const users = USERS;
+  //  END DEMO
 
   let pageProps = {
     products,
     // orderProducts,
     // paymentProducts,
-    // users,
-    // bestseller
+    users,
+    bestseller
   };
 
   if (data.currentUser) {
@@ -72,15 +78,17 @@ AppComponent.getInitialProps = async (appContext) => {
     // const { data: myReviews } = await client.get('/api/products/myreviews');
 
     // const { data: orders } = await client.get('/api/orders');
+    const myOrders = null;
+    const myReviews = null;
 
     pageProps = {
       products,
       // orderProducts,
       // paymentProducts,
-      // users,
-      // bestseller,
-      // myOrders,
-      // myReviews,
+      users,
+      bestseller,
+      myOrders,
+      myReviews,
       // orders
     };
   }

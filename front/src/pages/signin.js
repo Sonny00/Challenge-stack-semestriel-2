@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import useRequest from '../hooks/useRequest';
 import Loader from '../components/common/Loader';
+import { APP_NAME } from '../lib/dicts/common';
 
 const signin = ({ currentUser }) => {
   const [email, setEmail] = useState('');
@@ -58,7 +59,7 @@ const signin = ({ currentUser }) => {
     isReady && (
 			<>
 				<Head>
-					<title>Sign In | Aurapan</title>
+					<title>Sign In | {APP_NAME}</title>
 				</Head>
 				{loading
 				  ? (
