@@ -33,8 +33,8 @@ const ProductDescription = ({ product }) => {
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link eventKey="size-chart" as="div">
-								Size Chart
+							<Nav.Link eventKey="specification" as="div">
+								Specification(s)
 							</Nav.Link>
 						</Nav.Item>
 					</Nav>
@@ -77,10 +77,10 @@ const ProductDescription = ({ product }) => {
 
 						<DynamicTabPane
 							className="description-panel"
-							eventKey="size-chart"
-							title="Size Chart"
+							eventKey="specification"
+							title="Spécifications"
 						>
-							<SizeChart />
+							Spécification Détails
 						</DynamicTabPane>
 					</DynamicTabContent>
 				</Col>

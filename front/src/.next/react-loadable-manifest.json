@@ -1,14 +1,26 @@
 {
-  "dashboard/index.js -> react-bootstrap/TabContainer": {
-    "id": "dashboard/index.js -> react-bootstrap/TabContainer",
+  "../components/product/ProductDescription.js -> react-bootstrap/TabContainer": {
+    "id": "../components/product/ProductDescription.js -> react-bootstrap/TabContainer",
     "files": []
   },
-  "dashboard/index.js -> react-bootstrap/TabContent": {
-    "id": "dashboard/index.js -> react-bootstrap/TabContent",
+  "../components/product/ProductDescription.js -> react-bootstrap/TabContent": {
+    "id": "../components/product/ProductDescription.js -> react-bootstrap/TabContent",
     "files": []
   },
-  "dashboard/index.js -> react-bootstrap/TabPane": {
-    "id": "dashboard/index.js -> react-bootstrap/TabPane",
+  "../components/product/ProductDescription.js -> react-bootstrap/TabPane": {
+    "id": "../components/product/ProductDescription.js -> react-bootstrap/TabPane",
+    "files": []
+  },
+  "../components/product/SizeChart.js -> react-bootstrap/TabContainer": {
+    "id": "../components/product/SizeChart.js -> react-bootstrap/TabContainer",
+    "files": []
+  },
+  "../components/product/SizeChart.js -> react-bootstrap/TabContent": {
+    "id": "../components/product/SizeChart.js -> react-bootstrap/TabContent",
+    "files": []
+  },
+  "../components/product/SizeChart.js -> react-bootstrap/TabPane": {
+    "id": "../components/product/SizeChart.js -> react-bootstrap/TabPane",
     "files": []
   }
 }

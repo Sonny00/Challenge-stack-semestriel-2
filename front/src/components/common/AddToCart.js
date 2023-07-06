@@ -6,8 +6,8 @@ import * as ga from '../../lib/ga';
 const AddToCart = ({
   product,
   currentUser,
-  color,
-  size,
+  // color,
+  // size,
   quantity = 1,
   discountFactor = 1,
   lg = false
@@ -29,8 +29,8 @@ const AddToCart = ({
         userId: currentUser?.id || null,
         title: product.title,
         qty: quantity,
-        color: color || null,
-        size: size || null,
+        // color: color || null,
+        // size: size || null,
         image: product.images.image1,
         price: product.price,
         countInStock: product.countInStock - quantity,
