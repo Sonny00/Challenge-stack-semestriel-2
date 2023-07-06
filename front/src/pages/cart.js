@@ -19,14 +19,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Message from '../components/common/Message';
 import CheckoutSteps from '../components/cart/CheckoutSteps';
 import NextImage from '../components/common/NextImage';
-import { APP_NAME } from '../lib/dicts/common';
+import { APP_NAME } from '../lib/dicts/common'
 
 const CartPage = ({ currentUser, products }) => {
   const [cart, setCart] = useState(null);
-  const [color, setColor] = useState([]);
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [size, setSize] = useState([]);
-  const [selectedSize, setSelectedSize] = useState(null);
+//   const [color, setColor] = useState([]);
+//   const [selectedColor, setSelectedColor] = useState(null);
+//   const [size, setSize] = useState([]);
+//   const [selectedSize, setSelectedSize] = useState(null);
   const [productId, setProductId] = useState(null);
   const [deletedItemId, setDeletedItemId] = useState(null);
   const [toolTipText, setToolTipText] = useState('');
@@ -36,6 +36,12 @@ const CartPage = ({ currentUser, products }) => {
   const [onIncrease, setOnIncrease] = useState(false);
   const [onDecrease, setOnDecrease] = useState(false);
   const [onRemove, setOnRemove] = useState(false);
+
+
+  const removeFromCartHandler = (productId) => {
+    setDeletedItemId(productId);
+    setOnRemove(true);
+  };
 
   useEffect(() => {
     // Get cartItems from LocalStorage
@@ -49,14 +55,14 @@ const CartPage = ({ currentUser, products }) => {
       setCart(cartItems);
 
       // Set initial value of color and size in form-select
-      const emptyColorArray = [];
-      const emptySizeArray = [];
-      cartItems.forEach((item) => {
-        emptyColorArray.push(item.color);
-        emptySizeArray.push(item.size);
-      });
-      setColor(emptyColorArray);
-      setSize(emptySizeArray);
+    //   const emptyColorArray = [];
+    //   const emptySizeArray = [];
+    //   cartItems.forEach((item) => {
+    //     emptyColorArray.push(item.color);
+    //     emptySizeArray.push(item.size);
+    //   });
+    //   setColor(emptyColorArray);
+    //   setSize(emptySizeArray);
 
       // Start render the page
       setStorageReady(true);
@@ -76,10 +82,13 @@ const CartPage = ({ currentUser, products }) => {
       }
 
       // Limit maximun and minimum range
+	  console.log(`existItem.countInStock + existItem.qty => ${existItem.countInStock + existItem.qty}`);
+	  console.log(`newQty => ${newQty}`);
       if (newQty > existItem.countInStock + existItem.qty) {
         newQty = existItem.countInStock + existItem.qty;
       } else if (newQty < 1) {
-        newQty = 1;
+        // newQty = 1;
+		removeFromCartHandler(existItem.productId)
       }
 
       // Update new Item
@@ -87,8 +96,8 @@ const CartPage = ({ currentUser, products }) => {
         userId: existItem.userId,
         title: existItem.title,
         qty: Number(newQty),
-        color: selectedColor !== null ? selectedColor : existItem.color,
-        size: selectedSize !== null ? selectedSize : existItem.size,
+        // color: selectedColor !== null ? selectedColor : existItem.color,
+        // size: selectedSize !== null ? selectedSize : existItem.size,
         image: existItem.image,
         price: existItem.price,
         countInStock: Number(existItem.countInStock + existItem.qty - newQty),
@@ -112,8 +121,8 @@ const CartPage = ({ currentUser, products }) => {
       setCart(cartItems);
 
       // Reset parameter to default
-      setSelectedColor(null);
-      setSelectedSize(null);
+    //   setSelectedColor(null);
+    //   setSelectedSize(null);
       setOnIncrease(false);
       setOnDecrease(false);
       setOnEdit(false);
@@ -131,11 +140,6 @@ const CartPage = ({ currentUser, products }) => {
   const editItemHandler = (id) => {
     setProductId(id);
     setOnEdit(true);
-  };
-
-  const removeFromCartHandler = (productId) => {
-    setDeletedItemId(productId);
-    setOnRemove(true);
   };
 
   const checkoutHandler = (e) => {
@@ -168,13 +172,13 @@ const CartPage = ({ currentUser, products }) => {
 					/>
 					<Row>
 						<Col md={8} className="mb-3">
-							<h3>Shopping Cart</h3>
+							<h3>Panier</h3>
 							{cart.length === 0
 							  ? (
 								<Message variant="secondary">
-									Your cart is empty. Keep shopping to find a cloth!{' '}
+									Votre panier est vide. Continuer votre achat!{' '}
 									<Link href="/">
-										<a>Keep Shopping</a>
+										<a>Continer vos achats</a>
 									</Link>
 								</Message>
 							    )
@@ -183,6 +187,7 @@ const CartPage = ({ currentUser, products }) => {
 									{cart.map((item, index) => (
 										<ListGroup.Item key={index} id="cart-items">
 											<Row>
+												{/* Product Image - go to product page*/}
 												<Col md={2} xs={4}>
 													<Link
 														href={'/products/[productId]'}
@@ -213,7 +218,7 @@ const CartPage = ({ currentUser, products }) => {
 																</a>
 															</Link>
 
-															<div className="px-0 mt-2 d-flex justify-content-between align-items-center">
+															{/* <div className="px-0 mt-2 d-flex justify-content-between align-items-center">
 																<h6>
 																	<strong>COLOR:</strong>
 																</h6>
@@ -253,9 +258,9 @@ const CartPage = ({ currentUser, products }) => {
 																			</option>
 																	  ))}
 																</Form.Select>
-															</div>
+															</div> */}
 
-															<div className="px-0 mt-2 d-flex justify-content-between align-items-center">
+															{/* <div className="px-0 mt-2 d-flex justify-content-between align-items-center">
 																<h6>
 																	<strong>Size:</strong>
 																</h6>
@@ -295,11 +300,10 @@ const CartPage = ({ currentUser, products }) => {
 																			</option>
 																	  ))}
 																</Form.Select>
-															</div>
+															</div> */}
 														</Col>
 
-														{item.discount !== 1
-														  ? (
+														{item.discount !== 1 ? (
 															<Col
 																md={3}
 																className="cart-price d-flex flex-row flex-wrap justify-content-between"
@@ -410,9 +414,9 @@ const CartPage = ({ currentUser, products }) => {
 								<ListGroup variant="flush">
 									<ListGroup.Item>
 										<h3>
-											Subtotal (
+											Soust-total (
 											{cart.reduce((acc, item) => acc + Number(item.qty), 0)})
-											items
+											article(s)
 										</h3>
 									</ListGroup.Item>
 									<ListGroup.Item>
@@ -440,8 +444,8 @@ const CartPage = ({ currentUser, products }) => {
 											onClick={checkoutHandler}
 										>
 											{currentUser?.id
-											  ? 'Proceed To Chackout'
-											  : 'Proceed To Sign In'}
+											  ? 'Procéder au paiement'
+											  : 'Me connecter d\'abord'}
 										</Button>
 									</ListGroup.Item>
 								</ListGroup>
