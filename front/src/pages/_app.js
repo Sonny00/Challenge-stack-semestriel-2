@@ -11,6 +11,7 @@ import Headers from "../components/header/Header";
 import Footer from '../components/footer/Footer';
 import { PRODUCTS } from '../lib/datas/products'
 import { USERS } from '../lib/datas/users'
+import { ORDERS, MYORDERS } from '../lib/datas/orders'
 
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
@@ -58,11 +59,12 @@ AppComponent.getInitialProps = async (appContext) => {
   // const { data: paymentProducts } = await client.get('/api/payments/products');
   
   // DEMO
-  const data = { currentUser: { id: "U1", email: "moufid.mtr@gmail.com" }}
+  const data = { currentUser: {...USERS.filter(user => user.id == "U1")[0]}}
   // const data = { }
   const products = PRODUCTS;
   const bestseller = null;
   const users = USERS;
+  const orders = ORDERS;
   //  END DEMO
 
   let pageProps = {
@@ -78,7 +80,7 @@ AppComponent.getInitialProps = async (appContext) => {
     // const { data: myReviews } = await client.get('/api/products/myreviews');
 
     // const { data: orders } = await client.get('/api/orders');
-    const myOrders = null;
+    const myOrders = MYORDERS;
     const myReviews = null;
 
     pageProps = {
@@ -89,7 +91,7 @@ AppComponent.getInitialProps = async (appContext) => {
       bestseller,
       myOrders,
       myReviews,
-      // orders
+      orders
     };
   }
 

@@ -24,7 +24,7 @@ const UserOrderList = ({ myOrders }) => {
 							<th>TIME</th>
 							<th>TOTAL</th>
 							<th>METHOD</th>
-							<th>EXPIRE</th>
+							{/* <th>EXPIRE</th> */}
 							<th>PAID</th>
 							<th>DELIVERED</th>
 							<th>DETAILS</th>
@@ -54,7 +54,7 @@ const UserOrderList = ({ myOrders }) => {
 										)}
 									</p>
 								</td>
-								<td>
+								{/* <td>
 									{order.status === "cancelled" ? (
 										<p style={{ color: "red", fontWeight: "bolder" }}>
 											Expired
@@ -68,7 +68,7 @@ const UserOrderList = ({ myOrders }) => {
 											<ExpireTimer order={order} />
 										</>
 									)}
-								</td>
+								</td> */}
 								<td>
 									{order.isPaid ? (
 										<p>
@@ -76,7 +76,7 @@ const UserOrderList = ({ myOrders }) => {
 												icon={faCheck}
 												style={{ color: "green" }}
 											/>{" "}
-											{order.paidAt?.substring(0, 10)}
+											{order.paidAt?.toString().substring(0, 24)}
 										</p>
 									) : (
 										<p>

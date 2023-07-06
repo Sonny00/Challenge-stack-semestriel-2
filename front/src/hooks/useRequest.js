@@ -16,6 +16,7 @@ export default ({ url, method, body, onSuccess }) => {
 
       return response.data;
     } catch (err) {
+      console.log({...err});
       if (typeof err.response.data !== 'string') {
         setErrors(
           <Alert variant="danger" className="mt-3 mb-0">
@@ -32,7 +33,7 @@ export default ({ url, method, body, onSuccess }) => {
           <Alert variant="danger" className="mt-3 mb-0">
             <Alert.Heading>Ooops....</Alert.Heading>
             <ListGroup className="my-0">
-              <ListGroup.Item>500 Internal Server Error</ListGroup.Item>
+              <ListGroup.Item>Veuillez contacter le service client.</ListGroup.Item>
             </ListGroup>
           </Alert>
         );

@@ -39,7 +39,7 @@ const EditProfile = ({ user }) => {
 
   useEffect(() => {
     if (user || updateSuccess) {
-      setName(user.name);
+      setName(user.firstname+ ' ' + user.lastname);
       setImage(user.image);
       setGender(user.gender);
       setAge(user.age);

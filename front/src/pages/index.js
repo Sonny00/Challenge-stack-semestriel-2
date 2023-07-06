@@ -17,7 +17,6 @@ const adsBanners = [
 ];
 
 const LandingPage = ({ currentUser, products }) => {
-  console.log("products => ", products);
   const [onMobile, setOnMobile] = useState(false);
 
   const { width } = useWindowSize();

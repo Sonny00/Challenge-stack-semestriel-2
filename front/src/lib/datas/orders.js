@@ -6,36 +6,88 @@
 // isDelivered: boolean
 // userId: string
 // cart/products : collection of product
+import { PRODUCTS as products } from '../datas/products'
+import { USERS as users } from '../datas/users'
+
+const getRandomElements = (a, n) => {
+    const l = a.slice()
+    const o = []
+    for (let i = 0; i < n; i++) {
+      o.push(...l.splice(Math.floor(Math.random() * l.length), 1))
+    }
+    return o
+}
+const cartProducts = getRandomElements(products,2);
+
+const getUserShippingAddress = (userId) => {
+    return users.reduce((data, user) => {
+        if (user.id === userId) data.push(user.shippingAddress)
+        return data
+    }, [])[0]
+}
 
 const ORDERS = [
     {
-        id: "01",
-        paidAt: new Date().now(),
-        totalPrice: 125,
-        status: "cancelled",
-        isPaid: false,
-        isDelivered: false,
+        id: "O1",
         userId: "U1",
-        // cart: [
-        //     userId:"" 
-        // ]
+        createdAt: Date(2023, 6, 7, 14, 3, 4),
+        paidAt: Date(2023, 6, 8, 8, 3, 4),
+        status: "cancelled",
+        isPaid: true,
+        isDelivered: false,
+        cart: [
+            {
+                userId: cartProducts[0].userId,
+                title: cartProducts[0].title,
+                qty: 2,
+                // color: { type: String, required: true },
+                // size: { type: String, required: true },
+                image: cartProducts[0].images.image1,
+                price: cartProducts[0].price,
+                countInStock: 5,
+                discount: 1,
+                productId: cartProducts[0].id
+            }
+        ],
+        shippingAddress: getUserShippingAddress("U1"),
+        itemsPrice: cartProducts[0].price,
+        paymentMethod: 'stripe',
+        shippingPrice: 3.99,
+        totalPrice: cartProducts[0].price + 3.99
     },
     {
-        id: "02",
-        email: "user1@demo.com",
-        firsrtname: "User1",
-        lastname: "Demo",
-        password: "password",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
-    },
-    {
-        id: "03",
-        email: "user2@demo.com",
-        firsrtname: "User2",
-        lastname: "Demo",
-        password: "password",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
-    },
+        id: "O2",
+        userId: "U1",
+        createdAt: Date(2023, 6, 7, 14, 3, 4),
+        paidAt: Date(2023, 6, 7, 14, 20, 4),
+        status: "completed",
+        isPaid: true,
+        isDelivered: false,
+        cart: [
+            {
+                userId: cartProducts[1].userId,
+                title: cartProducts[1].title,
+                qty: 2,
+                // color: { type: String, required: true },
+                // size: { type: String, required: true },
+                image: cartProducts[1].images.image1,
+                price: cartProducts[1].price,
+                countInStock: 5,
+                discount: 1,
+                productId: cartProducts[1].id
+            }
+        ],
+        shippingAddress: getUserShippingAddress("U1"),
+        itemsPrice: cartProducts[1].price,
+        paymentMethod: 'stripe',
+        shippingPrice: 3.99,
+        totalPrice: cartProducts[1].price + 3.99
+    },  
 ]
 
-export { USERS }
+const MYORDERS = ORDERS.reduce((myOrders, ORDER) => {
+    if (ORDER.userId ==='U1') myOrders.push(ORDER);
+    return myOrders;
+}, [])
+
+export { ORDERS, MYORDERS }

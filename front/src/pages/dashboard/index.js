@@ -129,13 +129,13 @@ const Dashboard = ({ currentUser, users, myOrders, myReviews, products }) => {
 										<UserOrderList myOrders={myOrders} />
 									</DynamicTabPane>
 
-									<DynamicTabPane eventKey="reviews">
+									{/* <DynamicTabPane eventKey="reviews">
 										<UserReviewList myReviews={myReviews} products={products} />
-									</DynamicTabPane>
+									</DynamicTabPane> */}
 
-									<DynamicTabPane eventKey="wishlist">
+									{/* <DynamicTabPane eventKey="wishlist">
 										<WishList products={products} />
-									</DynamicTabPane>
+									</DynamicTabPane> */}
 
 									<DynamicTabPane eventKey="support">
 										<Support user={user} />

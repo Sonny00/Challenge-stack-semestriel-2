@@ -19,7 +19,7 @@ const AccountDropDown = ({
 			onMouseLeave={() => setShowAccountDropDown(false)}
 		>
 			<div className="account-dropdown-item account-dropdown-title d-flex justify-content-center">
-				{currentUser?.name}
+				{currentUser?.firstname}
 			</div>
 
 			<Link href="/dashboard" passHref>

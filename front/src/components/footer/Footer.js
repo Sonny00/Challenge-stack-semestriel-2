@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Image from 'next/image';
+import { APP_NAME } from '../../lib/dicts/common';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -178,7 +179,7 @@ const Footer = () => {
 								Copyright &copy; {currentYear}
 								<span className="ms-2">
 									<Link href="https://thanachon.me" passHref>
-										<a target="_blank">THASUP</a>
+										<a target="_blank">{APP_NAME}</a>
 									</Link>
 								</span>
 							</Col>
