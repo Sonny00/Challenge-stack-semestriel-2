@@ -65,12 +65,14 @@ AppComponent.getInitialProps = async (appContext) => {
   const bestseller = null;
   const users = USERS;
   const orders = ORDERS;
+  const orderProducts = MYORDERS; // List of all product ordered, not just for one user
+  const paymentProducts = MYORDERS[0]; // List of all product ordered and paid
   //  END DEMO
 
   let pageProps = {
     products,
-    // orderProducts,
-    // paymentProducts,
+    orderProducts,
+    paymentProducts,
     users,
     bestseller
   };
@@ -85,8 +87,8 @@ AppComponent.getInitialProps = async (appContext) => {
 
     pageProps = {
       products,
-      // orderProducts,
-      // paymentProducts,
+      orderProducts,
+      paymentProducts,
       users,
       bestseller,
       myOrders,
