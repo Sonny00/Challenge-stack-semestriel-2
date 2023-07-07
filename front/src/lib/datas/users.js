@@ -13,6 +13,7 @@ const USERS = [
         lastname: "MTR",
         gender: "Male",
         age:25,
+        isAdmin: true,
         bio: "Dev Ing",
         shippingAddress: {
             address: "25 rue de Boulet",
@@ -30,6 +31,7 @@ const USERS = [
         lastname: "Demo",
         gender: "Female",
         age:39,
+        isAdmin: false,
         bio: "Mum ",
         shippingAddress: {
             address: "8 rue de Boulet",
@@ -47,6 +49,7 @@ const USERS = [
         lastname: "Demo",
         gender: "Male",
         age:44,
+        isAdmin: false,
         bio: "Dad",
         shippingAddress: {
             address: "8 av de Boulet",

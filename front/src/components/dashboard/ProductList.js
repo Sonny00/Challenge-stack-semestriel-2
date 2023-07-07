@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Row, Spinner, Table } from 'react-bootstrap';
 
 import useRequest from '../../hooks/useRequest';
-import ColorSelector from '../common/ColorSelector';
+// import ColorSelector from '../common/ColorSelector';
 import CustomTooltip from '../common/CustomTooltip';
-import SizeSelector from '../common/SizeSelector';
+// import SizeSelector from '../common/SizeSelector';
 
 const ProductList = ({ products, orderProducts, paymentProducts }) => {
   const [deleteProductId, setDeleteProductId] = useState(null);
@@ -48,15 +48,15 @@ const ProductList = ({ products, orderProducts, paymentProducts }) => {
 							<th>NAME</th>
 							<th>QTY</th>
 							<th>PRICE</th>
-							<th>COLOR</th>
-							<th>SIZE</th>
+							{/* <th>COLOR</th>
+							<th>SIZE</th> */}
 							<th>CATEGORY</th>
 							<th>BRAND</th>
 							<th>MATERIAL</th>
 							<th>REVIEW</th>
-							<th>PRO VER.</th>
-							<th>ORD VER.</th>
-							<th>PAY VER.</th>
+							{/* <th>PRO VER.</th>
+							<th>ORD VER.</th>*/}
+							<th>PAY VER.</th> 
 							<th>DETAILS</th>
 						</tr>
 					</thead>
@@ -76,23 +76,23 @@ const ProductList = ({ products, orderProducts, paymentProducts }) => {
 								</td>
 								<td>{product.countInStock}</td>
 								<td>${product.price}</td>
-								<td>
+								{/* <td>
 									<ColorSelector
 										product={product}
 										margin={'2px'}
 										size={'1.5rem'}
 										flex={'start'}
 									/>
-								</td>
-								<td>
+								</td> */}
+								{/* <td>
 									<SizeSelector product={product} width={'1.2rem'} />
-								</td>
+								</td> */}
 								<td>{product.category}</td>
 								<td>{product.brand}</td>
 								<td>{product.material}</td>
 								<td>{product.numReviews}</td>
 								<td>{product.version}</td>
-								<td>
+								{/* <td>
 									{orderProducts.find(
 									  (orderProduct) => orderProduct.id === product.id
 									).version === product.version
@@ -125,7 +125,7 @@ const ProductList = ({ products, orderProducts, paymentProducts }) => {
 											}
 										</span>
 									    )}
-								</td>
+								</td> */}
 								<td>
 									<Link
 										href={'/products/edit/[productId]'}

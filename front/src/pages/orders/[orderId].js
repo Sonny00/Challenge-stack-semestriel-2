@@ -11,7 +11,7 @@ import {
 import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import StripeCheckout from 'react-stripe-checkout';
-import { PayPalButton } from 'react-paypal-button-v2';
+// import { PayPalButton } from 'react-paypal-button-v2';
 import Head from 'next/head';
 
 import NextImage from '../../components/common/NextImage';
@@ -31,7 +31,7 @@ const OrderPage = ({ currentUser, orders, myOrders }) => {
   const [loading, setLoading] = useState(false);
   const [loadingPay, setLoadingPay] = useState(false);
   const [loadingDeliver, setLoadingDeliver] = useState(false);
-  const [paypalLoaded, setPaypalLoaded] = useState(false);
+//   const [paypalLoaded, setPaypalLoaded] = useState(false);
 
   const { doRequest: payOrder, errors: paymentErrors } = useRequest({
     url: '/api/payments',
@@ -73,31 +73,31 @@ const OrderPage = ({ currentUser, orders, myOrders }) => {
   }, []);
 
   useEffect(async () => {
-    const addPayPalScript = async () => {
-      // Add paypal script to DOM
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://www.paypal.com/sdk/js?client-id=AdL_T7SNeUKaFYK8QBDWYsmFP3wKpIYtwzMOAVl8I2s6kvKImr47ImGxB9NbPFQA4kfGqt-ZNrRmBtgx';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
+    // const addPayPalScript = async () => {
+    //   // Add paypal script to DOM
+    //   const script = document.createElement('script');
+    //   script.type = 'text/javascript';
+    //   script.src = 'https://www.paypal.com/sdk/js?client-id=AdL_T7SNeUKaFYK8QBDWYsmFP3wKpIYtwzMOAVl8I2s6kvKImr47ImGxB9NbPFQA4kfGqt-ZNrRmBtgx';
+    //   script.async = true;
+    //   script.defer = true;
+    //   script.onload = () => {
+    //     setSdkReady(true);
+    //   };
+    //   document.body.appendChild(script);
+    // };
 
     if (order) {
       // Check if customer hasn't paid the order and chose to proceed with paypal
-      if (order.paymentMethod === 'paypal' && order.isPaid === false) {
-        // Check if the page hasn't loaded with paypal, then
-        if (!window.paypal && !paypalLoaded) {
-          // just add the paypal script (and sdk ready)
-          addPayPalScript();
-        } else {
-          // if page has loaded with paypal, then just set the sdk ready
-          setSdkReady(true);
-        }
-      }
+    //   if (order.paymentMethod === 'paypal' && order.isPaid === false) {
+    //     // Check if the page hasn't loaded with paypal, then
+    //     if (!window.paypal && !paypalLoaded) {
+    //       // just add the paypal script (and sdk ready)
+    //       addPayPalScript();
+    //     } else {
+    //       // if page has loaded with paypal, then just set the sdk ready
+    //       setSdkReady(true);
+    //     }
+    //   }
     }
   }, [loadingPay, loadingDeliver, order]);
 
@@ -337,7 +337,7 @@ const OrderPage = ({ currentUser, orders, myOrders }) => {
 												    )
 												  : (
 													<>
-														{order.paymentMethod === 'paypal' && (
+														{/* {order.paymentMethod === 'paypal' && (
 															<>
 																{!sdkReady
 																  ? (
@@ -357,7 +357,7 @@ const OrderPage = ({ currentUser, orders, myOrders }) => {
 																	/>
 																    )}
 															</>
-														)}
+														)} */}
 														{order.paymentMethod === 'stripe' && (
 															<StripeCheckout
 																token={({ id }) => {

@@ -47,7 +47,8 @@ const ORDERS = [
                 price: cartProducts[0].price,
                 countInStock: 5,
                 discount: 1,
-                productId: cartProducts[0].id
+                productId: cartProducts[0].id,
+                version: cartProducts[0].version,
             }
         ],
         shippingAddress: getUserShippingAddress("U1"),
@@ -75,7 +76,8 @@ const ORDERS = [
                 price: cartProducts[1].price,
                 countInStock: 5,
                 discount: 1,
-                productId: cartProducts[1].id
+                productId: cartProducts[1].id,
+                version: cartProducts[1].version,
             }
         ],
         shippingAddress: getUserShippingAddress("U1"),
@@ -91,4 +93,12 @@ const MYORDERS = ORDERS.reduce((myOrders, ORDER) => {
     return myOrders;
 }, [])
 
-export { ORDERS, MYORDERS }
+const MYORDERSPRODUCTS = ORDERS.reduce((myOrders, ORDER) => {
+    if (ORDER.userId ==='U1') myOrders = ORDER.cart;
+    return myOrders;
+}, [])
+const MYORDERSPAID = MYORDERS.reduce((myOrdersPaid, ORDER) => {
+    if (ORDER.userId ==='U1' && ORDER.isPaid == true) myOrdersPaid = ORDERS.cart
+    return myOrdersPaid
+}, [])
+export { ORDERS, MYORDERS,MYORDERSPRODUCTS ,MYORDERSPAID }

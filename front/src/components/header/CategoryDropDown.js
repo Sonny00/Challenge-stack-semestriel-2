@@ -4,16 +4,16 @@ import Image from 'next/image';
 
 import TopBannerSrc from '../../public/asset/header-banner/Top-category-banner.png';
 import BottomBannerSrc from '../../public/asset/header-banner/Bottom-category-banner.png';
-import DressBannerSrc from '../../public/asset/header-banner/Dress-category-banner.png';
-import SetBannerSrc from '../../public/asset/header-banner/Set-category-banner.png';
-import CoatBannerSrc from '../../public/asset/header-banner/Coat-category-banner.png';
+// import DressBannerSrc from '../../public/asset/header-banner/Dress-category-banner.png';
+// import SetBannerSrc from '../../public/asset/header-banner/Set-category-banner.png';
+// import CoatBannerSrc from '../../public/asset/header-banner/Coat-category-banner.png';
 
 const HeaderBannerSrc = {
-  Top: TopBannerSrc,
-  Bottom: BottomBannerSrc,
-  Dress: DressBannerSrc,
-  Set: SetBannerSrc,
-  Coat: CoatBannerSrc
+  TopClass: TopBannerSrc,
+  Cross: BottomBannerSrc,
+//   Dress: DressBannerSrc,
+//   Set: SetBannerSrc,
+//   Coat: CoatBannerSrc
 };
 
 const CategoryDropDown = ({

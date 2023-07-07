@@ -9,9 +9,9 @@ import '../styles/app.css';
 import * as ga from '../lib/ga';
 import Headers from "../components/header/Header";
 import Footer from '../components/footer/Footer';
-import { PRODUCTS } from '../lib/datas/products'
+import { PRODUCTS, BESTSELLER } from '../lib/datas/products'
 import { USERS } from '../lib/datas/users'
-import { ORDERS, MYORDERS } from '../lib/datas/orders'
+import { ORDERS, MYORDERS, MYORDERSPRODUCTS, MYORDERSPAID } from '../lib/datas/orders'
 
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
@@ -62,11 +62,11 @@ AppComponent.getInitialProps = async (appContext) => {
   const data = { currentUser: {...USERS.filter(user => user.id == "U1")[0]}}
   // const data = { }
   const products = PRODUCTS;
-  const bestseller = null;
+  const bestseller = BESTSELLER;
   const users = USERS;
   const orders = ORDERS;
-  const orderProducts = MYORDERS; // List of all product ordered, not just for one user
-  const paymentProducts = MYORDERS[0]; // List of all product ordered and paid
+  const orderProducts = MYORDERSPRODUCTS; // List of all product ordered, not just for one user
+  const paymentProducts = MYORDERSPAID; // List of all product ordered and paid
   //  END DEMO
 
   let pageProps = {

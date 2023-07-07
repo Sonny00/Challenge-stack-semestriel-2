@@ -12,7 +12,7 @@ const Header = ({ currentUser, products, bestseller }) => {
   const { width } = useWindowSize();
 
   // All category on the website
-  const productCategories = ['Top', 'Bottom', 'Dress', 'Set', 'Coat'];
+  const productCategories = ['TopClass', 'Cross'];
 
   useEffect(() => {
     // Update cart item number every 0.1 second
