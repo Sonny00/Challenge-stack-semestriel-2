@@ -1,20 +1,36 @@
-import { useEffect } from "react";
-import useRequest from "../hooks/use-request";
-import Router from "next/router";
+import React, { useEffect } from 'react';
+import Router from 'next/router';
+import Head from 'next/head';
 
-const Signout = () => {
+import useRequest from '../hooks/useRequest';
+import Loader from '../components/common/Loader';
+import { APP_NAME } from '../lib/dicts/common';
+
+const signout = () => {
   const { doRequest } = useRequest({
-    url: "/api/users/signout",
-    method: "post",
+    url: '/api/users/signout',
+    method: 'post',
     body: {},
-    onSuccess: () => Router.push("/"),
+    onSuccess: () => Router.push('/')
   });
 
   useEffect(() => {
     doRequest();
   }, []);
 
-  return <div>Vous êtes déconnecté</div>;
+  return (
+		<>
+			<Head>
+				<title>Sign Out | {APP_NAME}</title>
+			</Head>
+			<div
+				className="d-flex justify-content-center align-items-center px-0"
+				style={{ marginTop: '80px' }}
+			>
+				<Loader />
+			</div>
+		</>
+  );
 };
 
-export default Signout;
+export default signout;

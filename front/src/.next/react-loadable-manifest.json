@@ -1,1 +1,14 @@
-{}
+{
+  "dashboard/index.js -> react-bootstrap/TabContainer": {
+    "id": "dashboard/index.js -> react-bootstrap/TabContainer",
+    "files": []
+  },
+  "dashboard/index.js -> react-bootstrap/TabContent": {
+    "id": "dashboard/index.js -> react-bootstrap/TabContent",
+    "files": []
+  },
+  "dashboard/index.js -> react-bootstrap/TabPane": {
+    "id": "dashboard/index.js -> react-bootstrap/TabPane",
+    "files": []
+  }
+}
