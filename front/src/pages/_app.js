@@ -60,8 +60,8 @@ AppComponent.getInitialProps = async (appContext) => {
   
   // DEMO
   // const data = { } 
-  // const data = { currentUser: {...USERS.filter(user => user.id == "U1")[0]}}
-  const data = { currentUser: {...USERS.filter(user => user.id == "U2")[0]}}
+  const data = { currentUser: {...USERS.filter(user => user.id == "U1")[0]}}
+  // const data = { currentUser: {...USERS.filter(user => user.id == "U2")[0]}}
 
   const products = PRODUCTS;
   const bestseller = BESTSELLER;
