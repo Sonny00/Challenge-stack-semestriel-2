@@ -43,7 +43,7 @@
 	}
 
 	&--r130 {
-		margin-top: 130px;
+		margin-top: 45px;
 
 @include respond(extra-large-mobile) {
 			margin-top: 80px;
@@ -185,7 +185,7 @@
 	}
 
 	&--r130 {
-		margin-bottom: 130px !important;
+		margin-bottom: 40px !important;
 
 @include respond(extra-large-mobile) {
 			margin-bottom: 80px !important;
@@ -329,7 +329,7 @@
 	}
 
 	&--70 {
-		padding-bottom: 70px;
+		padding-bottom: 20px;
 	}
 
 	&--100 {

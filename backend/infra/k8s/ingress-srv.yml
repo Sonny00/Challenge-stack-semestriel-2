@@ -17,6 +17,13 @@ spec:
                 name: auth-srv
                 port:
                   number: 3000
+          - path: /api/moto/?(.*) 
+            pathType: Prefix     
+            backend:
+              service:
+                name: moto-srv
+                port:
+                  number: 3000  
           - path: /?(.*)
             pathType: Prefix
             backend:
