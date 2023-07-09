@@ -5,9 +5,8 @@ Classe 5IWJ
 
 Lien GitHub : https://github.com/Sonny00/Challenge-stack-semestriel-2
 
-### Getting started
+### Demarrage du projet 
 
 ```bash
-docker-compose build --pull --no-cache
-docker-compose up -d
+make start
 ```

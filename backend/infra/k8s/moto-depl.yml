@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moto-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moto
+  template:
+    metadata:
+      labels:
+        app: moto
+    spec:
+      containers:
+        - name: moto
+          image: esgivroom/moto
+          env: 
+            - name: MONGO_URI
+              value: 'mongodb://moto-mongo-srv:27017/moto'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moto-srv
+spec:
+  selector:
+    app: moto
+  ports:
+    - name: moto
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

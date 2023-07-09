@@ -1,0 +1,6 @@
+# Node modules
+/backend/node_modules
+/front/node_modules
+.DS_Store
+.next 
+```
